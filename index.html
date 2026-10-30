@@ -546,6 +546,41 @@
       font-weight: 400;
     }
 
+    .featured-stats {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 48px;
+      margin-bottom: 36px;
+      padding: 20px 0;
+      border-top: 1px solid var(--divider);
+      border-bottom: 1px solid var(--divider);
+      max-width: 520px;
+    }
+
+    @media (max-width: 540px) {
+      .featured-stats {
+        gap: 24px;
+      }
+    }
+
+    .stat-value {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+    }
+
     .video-wrap {
       position: relative;
       border-radius: 14px;
@@ -566,6 +601,16 @@
       flex-wrap: wrap;
       gap: 10px;
       font-size: 14px;
+      align-items: center;
+    }
+
+    .link-row-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      margin-right: 6px;
     }
 
     .link-chip {
@@ -730,58 +775,81 @@
       font-weight: 500;
     }
 
-    /* Contact */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 14px;
-      margin-top: 20px;
-      max-width: 760px;
-    }
-
-    .contact-card {
+    /* Sticky right rail */
+    .side-rail {
+      position: fixed;
+      top: 50%;
+      right: 32px;
+      transform: translateY(-50%);
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 14px;
-      padding: 20px 24px;
-      background: var(--bg-elev);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      color: var(--fg);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 500;
-      transition: all 0.2s ease;
+      z-index: 100;
     }
 
-    .contact-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
+    @media (max-width: 900px) {
+      .side-rail { display: none; }
     }
 
-    .contact-icon {
-      width: 36px;
-      height: 36px;
+    .rail-link {
+      position: relative;
+      width: 46px;
+      height: 46px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--accent-glow);
-      border-radius: 10px;
-      color: var(--accent);
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--fg-muted);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
     }
 
-    .contact-icon svg {
+    .rail-link::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--bg-elev);
+      opacity: 0.85;
+      z-index: -1;
+    }
+
+    .rail-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateX(-3px);
+    }
+
+    .rail-link svg {
       width: 18px;
       height: 18px;
     }
 
-    .contact-label {
-      font-size: 11px;
-      color: var(--fg-subtle);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .rail-link .rail-tooltip {
+      position: absolute;
+      right: calc(100% + 12px);
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 6px 12px;
+      background: var(--bg-elev-2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 12px;
       font-weight: 500;
-      margin-bottom: 2px;
+      color: var(--fg);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.2s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .rail-link:hover .rail-tooltip {
+      opacity: 1;
+      transform: translateY(-50%) translateX(-4px);
     }
 
     /* Footer */
@@ -868,6 +936,25 @@
 </head>
 <body>
 
+  <aside class="side-rail" aria-label="Social links">
+    <a class="rail-link" href="https://www.linkedin.com/in/swathi-pallikala" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <span class="rail-tooltip">LinkedIn</span>
+    </a>
+    <a class="rail-link" href="https://github.com/pallikalas" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      <span class="rail-tooltip">GitHub</span>
+    </a>
+    <a class="rail-link" href="https://www.curriculummind.com" target="_blank" rel="noopener" aria-label="CurriculumMind">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      <span class="rail-tooltip">CurriculumMind</span>
+    </a>
+    <a class="rail-link" href="mailto:swathi.pallikala@gmail.com" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <span class="rail-tooltip">Say hello</span>
+    </a>
+  </aside>
+
   <div class="container">
 
     <nav>
@@ -877,7 +964,7 @@
         <a href="#featured">Featured</a>
         <a href="#work">Work</a>
         <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
+        <a href="#writing">Writing</a>
       </div>
     </nav>
 
@@ -899,8 +986,8 @@
         </a>
         <a href="#featured" class="highlight-card highlight-card-accent">
           <div class="highlight-label">Selected by OpenAI</div>
-          <div class="highlight-title">Codex Creator Challenge</div>
-          <div class="highlight-desc">Project featured across OpenAI's LinkedIn, X, and Instagram. May 2026.</div>
+          <div class="highlight-title">Shipped in under an hour</div>
+          <div class="highlight-desc">A fully functional end to end fintech app, selected and featured by OpenAI at the Codex Creator Challenge.</div>
           <div class="highlight-arrow">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
           </div>
@@ -961,12 +1048,27 @@
         </div>
 
         <div class="featured-headline">
-          "When a student's idea can become a prototype with Codex, curiosity turns into momentum."
+          Built a fully functional end to end fintech app in under an hour.
         </div>
 
         <p class="featured-body">
-          I built a fully functional end to end financial planner and tracker in under an hour. OpenAI selected the project and featured it across their official LinkedIn, X, and Instagram channels, with me speaking on camera.
+          At the Codex Creator Challenge, I shipped a complete financial planner and tracker in under an hour using OpenAI Codex. OpenAI selected the project and featured it across their official LinkedIn, X, and Instagram channels, with me speaking on camera. The original Codex post has 40K+ views.
         </p>
+
+        <div class="featured-stats">
+          <div class="stat">
+            <div class="stat-value">&lt; 1 hr</div>
+            <div class="stat-label">Build to ship</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">3</div>
+            <div class="stat-label">OpenAI channels</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">40K+</div>
+            <div class="stat-label">Views on X</div>
+          </div>
+        </div>
 
         <div class="video-wrap">
           <video controls preload="metadata">
@@ -976,16 +1078,17 @@
         </div>
 
         <div class="link-row">
+          <div class="link-row-label">Featured at</div>
           <a class="link-chip" href="https://www.linkedin.com/posts/when-a-students-idea-can-become-a-prototype-ugcPost-7457175210983575552-9NwF/" target="_blank" rel="noopener">
-            LinkedIn feature
+            LinkedIn
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
           </a>
           <a class="link-chip" href="https://x.com/OpenAIDevs/status/2051410088171385015" target="_blank" rel="noopener">
-            X feature
+            X
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
           </a>
           <a class="link-chip" href="https://www.instagram.com/reels/DX7plOAh858/" target="_blank" rel="noopener">
-            Instagram feature
+            Instagram
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
           </a>
         </div>
@@ -1118,55 +1221,6 @@
       </div>
     </section>
 
-    <section id="contact">
-      <div class="section-label">Elsewhere</div>
-      <h2>Let's talk.</h2>
-      <p style="color: var(--fg-muted); font-size: 16px; margin-bottom: 32px; max-width: 580px; font-weight: 300;">
-        I'm open to conversations about agentic AI systems, AI in education, and consumer AI products. Reach me on any of these.
-      </p>
-
-      <div class="contact-grid">
-        <a class="contact-card" href="https://www.linkedin.com/in/swathi-pallikala" target="_blank" rel="noopener">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </div>
-          <div>
-            <div class="contact-label">LinkedIn</div>
-            <div>swathi-pallikala</div>
-          </div>
-        </a>
-
-        <a class="contact-card" href="https://github.com/pallikalas" target="_blank" rel="noopener">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-          </div>
-          <div>
-            <div class="contact-label">GitHub</div>
-            <div>pallikalas</div>
-          </div>
-        </a>
-
-        <a class="contact-card" href="https://www.curriculummind.com" target="_blank" rel="noopener">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-          </div>
-          <div>
-            <div class="contact-label">Website</div>
-            <div>curriculummind.com</div>
-          </div>
-        </a>
-
-        <a class="contact-card" href="mailto:swathi.pallikala@gmail.com">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div>
-            <div class="contact-label">Email</div>
-            <div>Say hello</div>
-          </div>
-        </a>
-      </div>
-    </section>
 
     <footer>
       <span>© 2026 Swathi Pallikala · Built in Fremont, California</span>

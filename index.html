@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Swathi Pallikala, Founder of CurriculumMind</title>
-  <meta name="description" content="Founder of CurriculumMind. Building the AI tutor every child deserves. Project selected and featured by OpenAI. Previously Google, BlueYonder, ModelN.">
+  <meta name="description" content="Founder of CurriculumMind. Building adaptive learning intelligence for modern education. Project selected and featured by OpenAI. Previously Google, BlueYonder, ModelN.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,6 +137,42 @@
     header {
       margin-bottom: 160px;
       max-width: 900px;
+    }
+
+    .hero-avatar-wrap {
+      margin-bottom: 36px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .hero-avatar-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, transparent 60%);
+      opacity: 0.4;
+      z-index: -1;
+    }
+
+    .hero-avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 2px solid var(--border);
+      display: block;
+    }
+
+    @media (max-width: 640px) {
+      .hero-avatar {
+        width: 64px;
+        height: 64px;
+      }
+      .hero-avatar-wrap {
+        margin-bottom: 28px;
+      }
     }
 
     .eyebrow {
@@ -352,6 +388,7 @@
       padding: 56px;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
 
     .hero-project::before {
@@ -391,7 +428,7 @@
       line-height: 1.7;
       color: var(--fg-muted);
       max-width: 620px;
-      margin-bottom: 36px;
+      margin: 0 auto 36px;
       font-weight: 400;
     }
 
@@ -412,6 +449,7 @@
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 12px;
+      text-align: center;
     }
 
     .pillar-title {
@@ -421,6 +459,7 @@
       margin-bottom: 6px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
     }
 
@@ -442,6 +481,7 @@
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     .btn {
@@ -490,6 +530,7 @@
       border-radius: 20px;
       padding: 44px;
       position: relative;
+      text-align: center;
     }
 
     @media (max-width: 640px) {
@@ -499,10 +540,15 @@
     .featured-top {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 14px;
       margin-bottom: 24px;
       padding-bottom: 24px;
       border-bottom: 1px solid var(--divider);
+    }
+
+    .featured-top-badge {
+      margin-left: 0 !important;
     }
 
     .featured-top-text {
@@ -533,7 +579,7 @@
       font-weight: 400;
       line-height: 1.25;
       letter-spacing: -0.02em;
-      margin-bottom: 20px;
+      margin: 0 auto 20px;
       max-width: 720px;
     }
 
@@ -541,7 +587,7 @@
       color: var(--fg-muted);
       font-size: 15px;
       line-height: 1.7;
-      margin-bottom: 32px;
+      margin: 0 auto 32px;
       max-width: 600px;
       font-weight: 400;
     }
@@ -550,11 +596,12 @@
       display: grid;
       grid-template-columns: repeat(3, auto);
       gap: 48px;
-      margin-bottom: 36px;
+      margin: 0 auto 36px;
       padding: 20px 0;
       border-top: 1px solid var(--divider);
       border-bottom: 1px solid var(--divider);
       max-width: 520px;
+      justify-content: center;
     }
 
     @media (max-width: 540px) {
@@ -586,7 +633,7 @@
       border-radius: 14px;
       overflow: hidden;
       background: var(--bg);
-      margin-bottom: 28px;
+      margin: 0 auto 28px;
       border: 1px solid var(--border);
       max-width: 500px;
     }
@@ -602,6 +649,7 @@
       gap: 10px;
       font-size: 14px;
       align-items: center;
+      justify-content: center;
     }
 
     .link-row-label {
@@ -760,6 +808,31 @@
       font-weight: 400;
     }
 
+    /* Inline links in prose */
+    .inline-link {
+      color: var(--fg);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      transition: all 0.2s ease;
+      padding-bottom: 1px;
+    }
+
+    .inline-link:hover {
+      color: var(--accent);
+    }
+
+    .title-link {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 2px solid var(--accent);
+      transition: all 0.2s ease;
+      padding-bottom: 2px;
+    }
+
+    .title-link:hover {
+      color: var(--accent);
+    }
+
     /* About prose */
     .prose p {
       color: var(--fg-muted);
@@ -773,6 +846,62 @@
     .prose p strong {
       color: var(--fg);
       font-weight: 500;
+    }
+
+    /* Scroll buttons */
+    .scroll-btn {
+      position: fixed;
+      left: 32px;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--fg-muted);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.25s ease;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    .scroll-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: scale(1.08);
+    }
+
+    .scroll-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .scroll-top {
+      bottom: 86px;
+    }
+
+    .scroll-bottom {
+      bottom: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .scroll-btn {
+        left: 16px;
+        bottom: 16px;
+      }
+      .scroll-top {
+        bottom: 70px;
+      }
     }
 
     /* Sticky right rail */
@@ -936,6 +1065,20 @@
 </head>
 <body>
 
+  <button class="scroll-btn scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5"/>
+      <polyline points="5 12 12 5 19 12"/>
+    </svg>
+  </button>
+
+  <button class="scroll-btn scroll-bottom" id="scrollBottom" aria-label="Scroll to bottom">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="5" x2="12" y2="19"/>
+      <polyline points="19 12 12 19 5 12"/>
+    </svg>
+  </button>
+
   <aside class="side-rail" aria-label="Social links">
     <a class="rail-link" href="https://www.linkedin.com/in/swathi-pallikala" target="_blank" rel="noopener" aria-label="LinkedIn">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -969,10 +1112,13 @@
     </nav>
 
     <header>
+      <div class="hero-avatar-wrap">
+        <img src="assets/swathi.png" alt="Swathi Pallikala" class="hero-avatar" />
+      </div>
       <div class="eyebrow">Founder · CurriculumMind</div>
-      <h1>Building the <em>AI tutor</em><br>every child deserves.</h1>
+      <h1>Building <em>Adaptive Learning Intelligence</em><br>for Modern Education.</h1>
       <p class="tagline">
-        <strong>Swathi Pallikala</strong> is a software engineer with 7+ years at Google, BlueYonder, and ModelN, finishing an MS in AI and ML at Cal State East Bay. She is building CurriculumMind, a Common Core grounded AI tutor for grade 6 through 12 students.
+        <strong>Swathi Pallikala</strong> is a software engineer with 7+ years at Google, BlueYonder, and ModelN, finishing an MS in AI and ML at Cal State East Bay. She is building <a href="https://www.curriculummind.com" target="_blank" rel="noopener" class="inline-link">CurriculumMind</a>, a Common Core grounded AI tutor for grade 6 through 12 students.
       </p>
 
       <div class="hero-highlights">
@@ -999,9 +1145,11 @@
       <div class="section-label">Currently Building</div>
       <div class="hero-project">
         <div class="hero-project-eyebrow">The Company</div>
-        <div class="hero-project-title">CurriculumMind.</div>
+        <div class="hero-project-title">
+          <a href="https://www.curriculummind.com" target="_blank" rel="noopener" class="title-link">CurriculumMind.</a>
+        </div>
         <p class="hero-project-desc">
-          Every child deserves a tutor as patient and personalized as the best private tutor in Palo Alto, for the price of a Netflix subscription. CurriculumMind is an AI tutor for grade 6 through 12 that answers Socratically at the child's actual level, grounded in verified Common Core curriculum. Built on an agentic RAG platform with stateful tutoring workflows, academic integrity guardrails, and live mastery checks.
+          Every child deserves a tutor as patient and personalized as the best private tutor in Palo Alto, for the price of a Netflix subscription. <a href="https://www.curriculummind.com" target="_blank" rel="noopener" class="inline-link">CurriculumMind</a> is an AI tutor for grade 6 through 12 that answers Socratically at the child's actual level, grounded in verified Common Core curriculum. Built on an agentic RAG platform with stateful tutoring workflows, academic integrity guardrails, and live mastery checks.
         </p>
 
         <div class="pillar-grid">
@@ -1028,7 +1176,7 @@
             Visit CurriculumMind
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
           </a>
-          <a class="btn btn-ghost" href="https://www.curriculummind.com" target="_blank" rel="noopener">
+          <a class="btn btn-ghost" href="https://curriculummind.com/signup#waitlist" target="_blank" rel="noopener">
             Join the waitlist
           </a>
         </div>
@@ -1048,11 +1196,11 @@
         </div>
 
         <div class="featured-headline">
-          Built a fully functional end to end fintech app in under an hour.
+          A fully functional end to end fintech app shipped in under an hour.
         </div>
 
         <p class="featured-body">
-          At the Codex Creator Challenge, I shipped a complete financial planner and tracker in under an hour using OpenAI Codex. OpenAI selected the project and featured it across their official LinkedIn, X, and Instagram channels, with me speaking on camera. The original Codex post has 40K+ views.
+          At the Codex Creator Challenge, Swathi shipped a complete financial planner and tracker in under an hour using OpenAI Codex. OpenAI selected the project and featured it across their official LinkedIn, X, and Instagram channels. The original Codex post has 40K+ views.
         </p>
 
         <div class="featured-stats">
@@ -1100,7 +1248,7 @@
         <div class="vision-text">
           Every child deserves a tutor as patient and personalized as the best private tutor in Palo Alto, for the price of a Netflix subscription.
         </div>
-        <div class="vision-attribution">The CurriculumMind thesis</div>
+        <div class="vision-attribution">The <a href="https://www.curriculummind.com" target="_blank" rel="noopener" class="inline-link">CurriculumMind</a> thesis</div>
       </div>
     </section>
 
@@ -1111,7 +1259,7 @@
       <div class="projects-grid">
 
         <div class="project-card">
-          <div class="project-card-eyebrow">Research Tutorial · 2026</div>
+          <div class="project-card-eyebrow">Computer Vision · Deep Learning</div>
           <div class="project-card-title">
             <a href="https://pallikalas.github.io/Driver-Drowsiness-Detection-Tutorial/" target="_blank" rel="noopener">Drive Aware →</a>
           </div>
@@ -1126,7 +1274,7 @@
         </div>
 
         <div class="project-card">
-          <div class="project-card-eyebrow">Cloud AI · 2026</div>
+          <div class="project-card-eyebrow">Multimodal LLM · Generative AI</div>
           <div class="project-card-title">PhishLens</div>
           <p class="project-card-desc">
             Cloud native deepfake image detection platform. FastAPI noise forensics microservice on Google Cloud Run. Gemini for risk scoring and reasoning. Google Vision for facial analysis. React dashboard with Firestore analytics logging.
@@ -1139,7 +1287,7 @@
         </div>
 
         <div class="project-card">
-          <div class="project-card-eyebrow">Mobile · In Progress</div>
+          <div class="project-card-eyebrow">Edge AI · On-device Inference</div>
           <div class="project-card-title">DriveAware</div>
           <p class="project-card-desc">
             Mobile Android app that monitors driver drowsiness and distraction in real time. Applied continuation of the drowsiness research, moving perception on device with real camera, latency, and battery constraints.
@@ -1199,7 +1347,7 @@
             <div class="exp-role">M.S. Computer Science, AI and ML Concentration</div>
             <div class="exp-company">California State University, East Bay</div>
             <p class="exp-desc">
-              3.9 GPA. Coursework in Computer Vision, Natural Language Processing, Machine Learning, and Deep Learning. Capstone building on the CurriculumMind thesis.
+              3.9 GPA. Coursework in Computer Vision, Natural Language Processing, Machine Learning, and Deep Learning. Capstone building on the <a href="https://www.curriculummind.com" target="_blank" rel="noopener" class="inline-link">CurriculumMind</a> thesis.
             </p>
           </div>
         </div>
@@ -1211,7 +1359,7 @@
       <div class="section-label">Writing</div>
       <h2>A tinkerer's mindset, in public.</h2>
       <p>
-        I write <strong>AI Sync with Swathi</strong>, a daily newsletter where I think out loud about the frontier of AI tools, agentic systems, and what it means to build with them. Writing daily keeps me honest about what I actually understand and what I only think I do.
+        Swathi writes <strong>AI Sync with Swathi</strong>, a daily newsletter about the frontier of AI tools, agentic systems, and what it means to build with them. Writing daily is how she stays honest about what she actually understands and what she only thinks she does.
       </p>
       <div style="margin-top: 24px;">
         <a class="btn btn-primary" href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7333976885854408704" target="_blank" rel="noopener">
@@ -1248,6 +1396,43 @@
         root.setAttribute('data-theme', next);
         try { localStorage.setItem(KEY, next); } catch (e) { /* storage blocked */ }
       });
+    })();
+
+    (function () {
+      const topBtn = document.getElementById('scrollTop');
+      const bottomBtn = document.getElementById('scrollBottom');
+
+      function updateButtons() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight;
+        const viewHeight = window.innerHeight;
+        const nearTop = scrollY < 200;
+        const nearBottom = scrollY + viewHeight > docHeight - 200;
+
+        if (nearTop) {
+          topBtn.classList.remove('visible');
+        } else {
+          topBtn.classList.add('visible');
+        }
+
+        if (nearBottom) {
+          bottomBtn.classList.remove('visible');
+        } else {
+          bottomBtn.classList.add('visible');
+        }
+      }
+
+      topBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      bottomBtn.addEventListener('click', function () {
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      });
+
+      window.addEventListener('scroll', updateButtons, { passive: true });
+      window.addEventListener('resize', updateButtons, { passive: true });
+      updateButtons();
     })();
   </script>
 

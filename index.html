@@ -687,11 +687,33 @@
       height: 14px;
     }
 
+    /* Subsection labels */
+    .subsection-label {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--fg);
+      margin-top: 40px;
+      margin-bottom: 20px;
+      padding-left: 14px;
+      border-left: 2px solid var(--accent);
+    }
+
+    .subsection-label:first-of-type {
+      margin-top: 0;
+    }
+
     /* Other projects grid */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .projects-grid:last-of-type {
+      margin-bottom: 0;
     }
 
     .project-card {
@@ -1281,10 +1303,11 @@
       <div class="section-label">Other Work</div>
       <h2>Research, systems, and side projects.</h2>
 
+      <div class="subsection-label">Research</div>
       <div class="projects-grid">
 
         <div class="project-card">
-          <div class="project-card-eyebrow">Computer Vision · Deep Learning</div>
+          <div class="project-card-eyebrow">Research Tutorial · Computer Vision</div>
           <div class="project-card-title">
             <a href="https://pallikalas.github.io/Driver-Drowsiness-Detection-Tutorial/" target="_blank" rel="noopener">Drive Aware →</a>
           </div>
@@ -1297,6 +1320,11 @@
             <span class="tag">Evaluation</span>
           </div>
         </div>
+
+      </div>
+
+      <div class="subsection-label">Side Projects</div>
+      <div class="projects-grid">
 
         <div class="project-card">
           <div class="project-card-eyebrow">Multimodal LLM · Generative AI</div>
@@ -1312,15 +1340,15 @@
         </div>
 
         <div class="project-card">
-          <div class="project-card-eyebrow">Edge AI · On-device Inference</div>
+          <div class="project-card-eyebrow">Android App · In Development</div>
           <div class="project-card-title">DriveAware</div>
           <p class="project-card-desc">
-            Mobile Android app that monitors driver drowsiness and distraction in real time. Applied continuation of the drowsiness research, moving perception on device with real camera, latency, and battery constraints.
+            Mobile Android app currently being built that monitors driver drowsiness and distraction in real time. Applied continuation of the Drive Aware research tutorial, moving perception on device with real camera, latency, and battery constraints.
           </p>
           <div class="project-card-tags">
             <span class="tag">Android</span>
+            <span class="tag">Edge AI</span>
             <span class="tag">On-device inference</span>
-            <span class="tag">Multimodal</span>
           </div>
         </div>
 
